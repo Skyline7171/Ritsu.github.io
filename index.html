@@ -22,8 +22,43 @@
         <section>
             <h2>Bienvenidos a mi sitio web</h2>
             <p>¡Aquí encontrarás información interesante sobre mí!</p>
+
+            <button id="miBoton">Haz clic aquí</button>
         </section>
     </main>
+
+    <script>
+
+        function enviarDatos() {
+            // Obtén los datos que deseas enviar (por ejemplo, desde un formulario)
+            const datos = {
+                nombre: "Juan",
+                correo: "juan@example.com",
+                id: 'web page testing',
+            };
+
+            // Realiza una solicitud HTTP (por ejemplo, utilizando fetch) al endpoint deseado
+            fetch("http://66.11.123.213:2000/api/Ritsu/endpoint/cb1fe353b72905a82e5abe74fa6a8dc4847a9ebc799ce7d6f88b140caeae9fa5", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(datos)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Datos enviados correctamente");
+                } else {
+                    console.error("Error al enviar datos");
+                }
+            })
+            .catch(error => {
+                console.error("Error de red:", error);
+            });
+        }
+
+        document.getElementById("miBoton").addEventListener("click", enviarDatos);
+    </script>  
 
     <footer>
         <p>© 2024 Mi Sitio Web</p>
