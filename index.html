@@ -32,29 +32,25 @@
         function enviarDatos() {
             // Obtén los datos que deseas enviar (por ejemplo, desde un formulario)
             const data = {
-                nombre: "Juan",
-                correo: "juan@example.com",
+                mensaje: 'Hola desde la página web'
             };
 
-            var url = 'http://xxxxxx.xxxx.xxxxx.xxxx:xxxxxxxxxxxx/api/Ritsu/endpoint/cb1fe353b72905a82e5abe74fa6a8dc4847a9ebc799ce7d6f88b140caeae9fa5';
-            var payload = { data, id: 'Actualizador de logros' };  // Puedes ajustar el formato de datos según tus necesidades
-
-            var options = {
-                method: 'post',
-                contentType: 'application/json',
-                payload: JSON.stringify(payload)
-            };
-
-            fetch(url, options)
-            .then(response => {
+            fetch('https://tubotdiscord.com/endpoint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+                })
+                .then(response => {
                 if (response.ok) {
-                    console.log("Datos enviados correctamente");
+                    console.log('Mensaje enviado con éxito');
                 } else {
-                    console.error("Error al enviar datos");
+                    console.error('Error al enviar el mensaje');
                 }
-            })
-            .catch(error => {
-                console.error("Error de red:", error);
+                })
+                .catch(error => {
+                console.error('Error en la solicitud:', error);
             });
         }
 
